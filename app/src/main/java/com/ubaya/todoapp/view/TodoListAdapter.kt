@@ -26,8 +26,8 @@ class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Todo) 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val checkTask = holder.view.findViewById<CheckBox>(R.id.checkTask)
         checkTask.setText(todoList[position].title.toString())
-        checkTask.setOnCheckedChangeListener{
-            compoundButton, b -> adapterOnClick(todoList[position])
+        checkTask.setOnCheckedChangeListener { compoundButton, b ->
+            adapterOnClick(todoList[position])
         }
     }
 

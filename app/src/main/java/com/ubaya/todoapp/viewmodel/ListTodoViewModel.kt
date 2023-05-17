@@ -21,7 +21,7 @@ class ListTodoViewModel (application: Application)
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
+        get() = job + Dispatchers.IO
 
     fun refresh() {
         loadingLD.value = true
@@ -31,7 +31,7 @@ class ListTodoViewModel (application: Application)
                 getApplication(),
                 TodoDatabase::class.java, "newtododb").build()
 
-            todoLD.value = db.todoDao().selectAllTodo()
+            todoLD.postValue(db.todoDao().selectAllTodo())
         }
     }
 
@@ -42,7 +42,7 @@ class ListTodoViewModel (application: Application)
                 TodoDatabase::class.java, "newtododb").build()
             db.todoDao().deleteTodo(todo)
 
-            todoLD.value = db.todoDao().selectAllTodo()
+            todoLD.postValue(db.todoDao().selectAllTodo())
         }
     }
 }

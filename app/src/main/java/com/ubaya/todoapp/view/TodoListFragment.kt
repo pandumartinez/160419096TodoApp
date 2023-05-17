@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -49,7 +50,7 @@ class TodoListFragment : Fragment() {
         viewModel.todoLD.observe(viewLifecycleOwner, Observer {
             todoListAdapter.updateTodoList(it)
 
-            val txtEmpty = view.findViewById<FloatingActionButton>(R.id.txtEmpty)
+            val txtEmpty = view.findViewById<TextView>(R.id.txtEmpty)
             if(it.isEmpty()) {
                 txtEmpty.visibility = View.VISIBLE
             } else {

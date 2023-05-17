@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
@@ -33,9 +34,10 @@ class CreateTodoFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailTodoViewModel::class.java)
 
         val btnAdd = view.findViewById<Button>(R.id.btnAdd)
-        val txtTitle = view.findViewById<TextInputEditText>(R.id.txtTitle)
-        val txtNotes = view.findViewById<TextInputEditText>(R.id.txtNotes)
+
         btnAdd.setOnClickListener {
+            val txtTitle = view.findViewById<EditText>(R.id.txtTitle)
+            val txtNotes = view.findViewById<EditText>(R.id.txtNotes)
             var todo = Todo(txtTitle.text.toString(), txtNotes.text.toString())
             val list = listOf(todo)
             viewModel.addTodo(list)

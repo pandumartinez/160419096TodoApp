@@ -26,5 +26,5 @@ class DetailTodoViewModel(application: Application)
     }
 
     override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
+        get() = job + Dispatchers.IO
 }
